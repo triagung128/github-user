@@ -1,7 +1,7 @@
 package com.triagung.githubuser.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.triagung.githubuser.R
@@ -72,6 +72,8 @@ class MainActivity : AppCompatActivity(), UserAdapter.Listener {
     }
 
     override fun onItemClickListener(data: User) {
-        Toast.makeText(this, data.name, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(DetailActivity.EXTRA_USER, data)
+        startActivity(intent)
     }
 }

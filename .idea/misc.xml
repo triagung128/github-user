@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Projects/MobileApps/Native/GithubUser/app/src/main/res/drawable/ic_github.xml" value="0.2064814814814815" />
+        <entry key="..\:/Projects/MobileApps/Native/GithubUser/app/src/main/res/drawable/sp_rectangle_radius_bottom_20_343a40.xml" value="0.2064814814814815" />
+        <entry key="..\:/Projects/MobileApps/Native/GithubUser/app/src/main/res/layout/activity_detail.xml" value="0.22" />
         <entry key="..\:/Projects/MobileApps/Native/GithubUser/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Projects/MobileApps/Native/GithubUser/app/src/main/res/layout/item_user.xml" value="0.22" />
       </map>
