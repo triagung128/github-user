@@ -14,7 +14,7 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
 
-    private var user: User? = null
+//    private var user: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +23,8 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setToolbar()
-        getDataDetail()
-        initView()
+//        getDataDetail()
+//        initView()
     }
 
     private fun setToolbar() {
@@ -37,24 +37,24 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.elevation = 0F
     }
 
-    private fun getDataDetail() {
-        user = intent.getParcelableExtra(EXTRA_USER) as User?
-    }
+//    private fun getDataDetail() {
+//        user = intent.getParcelableExtra(EXTRA_USER) as User?
+//    }
 
-    private fun initView() {
-        binding.apply {
-            user?.let { data ->
-                ivUser.setImageResource(data.avatar)
-                tvName.text = data.name
-                tvUsername.text = data.username
-                tvFollower.text = getString(R.string.followers, data.follower)
-                tvFollowing.text = getString(R.string.following, data.following)
-                tvLocation.text = data.location
-                tvCompany.text = data.company
-                tvRepository.text = getString(R.string.repository, data.repository)
-            }
-        }
-    }
+//    private fun initView() {
+//        binding.apply {
+//            user?.let { data ->
+//                ivUser.setImageResource(data.avatar)
+//                tvName.text = data.name
+//                tvUsername.text = data.username
+//                tvFollower.text = getString(R.string.followers, data.follower)
+//                tvFollowing.text = getString(R.string.following, data.following)
+//                tvLocation.text = data.location
+//                tvCompany.text = data.company
+//                tvRepository.text = getString(R.string.repository, data.repository)
+//            }
+//        }
+//    }
 
     override fun onSupportNavigateUp(): Boolean {
         finish()
