@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.triagung.githubuser.databinding.ItemUserBinding
-import com.triagung.githubuser.model.User
 
 class UserAdapter(private val dataList: List<User>, private val listener: Listener) :
     RecyclerView.Adapter<UserAdapter.ViewHolder>() {
