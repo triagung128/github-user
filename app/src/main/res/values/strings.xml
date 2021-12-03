@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Github User</string>
-    <string name="profile">Profile</string>
     <string name="search_with_username">Search with username…</string>
     <string name="home_message">Please do a search!</string>
     <string name="empty_message">Data not found!</string>
+    <string name="tab_text_1">Followers</string>
+    <string name="tab_text_2">Following</string>
+    <string name="no_followers">This has no followers</string>
+    <string name="no_following">This has no following</string>
 </resources>

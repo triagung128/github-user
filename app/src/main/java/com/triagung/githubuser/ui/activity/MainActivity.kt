@@ -1,9 +1,9 @@
 package com.triagung.githubuser.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -18,7 +18,6 @@ import com.triagung.githubuser.viewmodel.MainViewModel
 class MainActivity : AppCompatActivity(), UserAdapter.Listener {
 
     private lateinit var binding: ActivityMainBinding
-
     private lateinit var userAdapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,12 +98,13 @@ class MainActivity : AppCompatActivity(), UserAdapter.Listener {
         builder.setPositiveButton("Okay") { dialog, _ ->
             dialog.dismiss()
         }
-
         val dialog = builder.create()
         dialog.show()
     }
 
     override fun onItemClickListener(data: User) {
-        Toast.makeText(this, data.login, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(DetailActivity.EXTRA_USERNAME, data.login)
+        startActivity(intent)
     }
 }

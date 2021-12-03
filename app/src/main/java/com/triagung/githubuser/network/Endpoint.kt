@@ -22,10 +22,10 @@ interface Endpoint {
     @GET("users/{username}/followers")
     fun getFollowers(
         @Path("username") username: String
-    ): Call<User>
+    ): Call<List<User>>
 
     @GET("users/{username}/following")
     fun getFollowing(
         @Path("username") username: String
-    ): Call<User>
+    ): Call<List<User>>
 }
