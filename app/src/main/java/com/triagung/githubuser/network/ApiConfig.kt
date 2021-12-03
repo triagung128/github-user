@@ -28,7 +28,7 @@ class ApiConfig {
             if (BuildConfig.DEBUG) {
                 builder.addInterceptor(loggingInterceptor)
             }
-            builder.addInterceptor(headerWithToken)
+//            builder.addInterceptor(headerWithToken)
             val client = builder.build()
 
             val retrofit = Retrofit.Builder()
