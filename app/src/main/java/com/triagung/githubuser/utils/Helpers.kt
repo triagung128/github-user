@@ -3,7 +3,6 @@ package com.triagung.githubuser.utils
 import android.app.Activity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.AppCompatActivity
 
 object Helpers {
     fun hideKeyboard(activity: Activity) {
