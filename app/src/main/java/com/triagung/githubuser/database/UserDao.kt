@@ -6,8 +6,7 @@ import com.triagung.githubuser.model.UserDetail
 
 @Dao
 interface UserDao {
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: UserDetail)
 
     @Delete
