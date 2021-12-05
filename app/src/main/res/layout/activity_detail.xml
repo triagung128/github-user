@@ -117,6 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
+        app:tint="@null"
         tools:ignore="ContentDescription"
         tools:src="@drawable/ic_favorite" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
