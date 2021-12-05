@@ -14,4 +14,7 @@ interface UserDao {
 
     @Query("SELECT * FROM userdetail WHERE login = :login LIMIT 1")
     fun getUserByUsername(login: String): LiveData<UserDetail>
+
+    @Query("SELECT * FROM userdetail")
+    fun getAllUser(): LiveData<List<UserDetail>>
 }

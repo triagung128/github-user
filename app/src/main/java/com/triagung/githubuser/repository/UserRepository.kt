@@ -17,6 +17,8 @@ class UserRepository(application: Application) {
         userDao = db.userDao()
     }
 
+    fun getAllUser() : LiveData<List<UserDetail>> = userDao.getAllUser()
+
     fun getUserByUsername(username: String): LiveData<UserDetail> =
         userDao.getUserByUsername(username)
 
