@@ -17,7 +17,8 @@ class UserRepository(application: Application) {
         userDao = db.userDao()
     }
 
-    fun getUserByUsername(username: String): LiveData<UserDetail> = userDao.getUserByUsername(username)
+    fun getUserByUsername(username: String): LiveData<UserDetail> =
+        userDao.getUserByUsername(username)
 
     fun insert(user: UserDetail) {
         executorService.execute { userDao.insert(user) }
