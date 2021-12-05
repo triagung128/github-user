@@ -1,16 +1,19 @@
 package com.triagung.githubuser.viewmodel
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.triagung.githubuser.model.User
 import com.triagung.githubuser.model.UserDetail
 import com.triagung.githubuser.network.ApiConfig
+import com.triagung.githubuser.repository.UserRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailViewModel : ViewModel() {
+class DetailViewModel(application: Application) : ViewModel() {
 
     companion object {
         private const val TAG = "DetailViewModel"
@@ -40,5 +43,15 @@ class DetailViewModel : ViewModel() {
                 Log.e(TAG, "onFailure: ${t.message}")
             }
         })
+    }
+
+    private val userRepository: UserRepository = UserRepository(application)
+
+    fun insert(user: User) {
+        userRepository.insert(user)
+    }
+
+    fun delete(user: User) {
+        userRepository.delete(user)
     }
 }
