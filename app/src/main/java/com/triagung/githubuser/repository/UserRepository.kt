@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import com.triagung.githubuser.database.UserDao
 import com.triagung.githubuser.database.UserRoomDatabase
-import com.triagung.githubuser.model.User
+import com.triagung.githubuser.model.UserDetail
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -17,13 +17,13 @@ class UserRepository(application: Application) {
         userDao = db.userDao()
     }
 
-    fun getUserByUsername(username: String): LiveData<User> = userDao.getUserByUsername(username)
+    fun getUserByUsername(username: String): LiveData<UserDetail> = userDao.getUserByUsername(username)
 
-    fun insert(user: User) {
+    fun insert(user: UserDetail) {
         executorService.execute { userDao.insert(user) }
     }
 
-    fun delete(user: User) {
+    fun delete(user: UserDetail) {
         executorService.execute { userDao.delete(user) }
     }
 }

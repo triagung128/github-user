@@ -1,134 +1,171 @@
 package com.triagung.githubuser.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class UserDetail(
+    @ColumnInfo(name = "avatar_url")
     @Expose
     @SerializedName("avatar_url")
-    val avatarUrl: String,
-
+    var avatarUrl: String = "",
+    
+    @ColumnInfo(name = "bio")
     @Expose
     @SerializedName("bio")
-    val bio: String,
-
+    var bio: String = "",
+    
+    @ColumnInfo(name = "blog")
     @Expose
     @SerializedName("blog")
-    val blog: String,
-
+    var blog: String = "",
+    
+    @ColumnInfo(name = "company")
     @Expose
     @SerializedName("company")
-    val company: String,
-
+    var company: String = "",
+    
+    @ColumnInfo(name = "created_at")
     @Expose
     @SerializedName("created_at")
-    val createdAt: String,
-
+    var createdAt: String = "",
+    
+    @ColumnInfo(name = "email")
     @Expose
     @SerializedName("email")
-    val email: String,
-
+    var email: String = "",
+    
+    @ColumnInfo(name = "events_url")
     @Expose
     @SerializedName("events_url")
-    val eventsUrl: String,
-
+    var eventsUrl: String = "",
+    
+    @ColumnInfo(name = "followers")
     @Expose
     @SerializedName("followers")
-    val followers: Int,
-
+    var followers: Int = 0,
+    
+    @ColumnInfo(name = "followers_url")
     @Expose
     @SerializedName("followers_url")
-    val followersUrl: String,
-
+    var followersUrl: String = "",
+    
+    @ColumnInfo(name = "following")
     @Expose
     @SerializedName("following")
-    val following: Int,
-
+    var following: Int = 0,
+    
+    @ColumnInfo(name = "following_url")
     @Expose
     @SerializedName("following_url")
-    val followingUrl: String,
-
+    var followingUrl: String = "",
+    
+    @ColumnInfo(name = "gists_url")
     @Expose
     @SerializedName("gists_url")
-    val gistsUrl: String,
-
+    var gistsUrl: String = "",
+    
+    @ColumnInfo(name = "gravatar_id")
     @Expose
     @SerializedName("gravatar_id")
-    val gravatarId: String,
-
+    var gravatarId: String = "",
+    
+    @ColumnInfo(name = "hireable")
     @Expose
     @SerializedName("hireable")
-    val hireable: String,
-
+    var hireable: String = "",
+    
+    @ColumnInfo(name = "html_url")
     @Expose
     @SerializedName("html_url")
-    val htmlUrl: String,
-
+    var htmlUrl: String = "",
+    
+    @PrimaryKey
+    @ColumnInfo(name = "id")
     @Expose
     @SerializedName("id")
-    val id: Int,
-
+    var id: Int = 0,
+    
+    @ColumnInfo(name = "location")
     @Expose
     @SerializedName("location")
-    val location: String,
-
+    var location: String = "",
+    
+    @ColumnInfo(name = "login")
     @Expose
     @SerializedName("login")
-    val login: String,
-
+    var login: String = "",
+    
+    @ColumnInfo(name = "name")
     @Expose
     @SerializedName("name")
-    val name: String,
-
+    var name: String = "",
+    
+    @ColumnInfo(name = "node_id")
     @Expose
     @SerializedName("node_id")
-    val nodeId: String,
-
+    var nodeId: String = "",
+    
+    @ColumnInfo(name = "organizations_url")
     @Expose
     @SerializedName("organizations_url")
-    val organizationsUrl: String,
-
+    var organizationsUrl: String = "",
+    
+    @ColumnInfo(name = "public_gists")
     @Expose
     @SerializedName("public_gists")
-    val publicGists: Int,
-
+    var publicGists: Int = 0,
+    
+    @ColumnInfo(name = "public_repos")
     @Expose
     @SerializedName("public_repos")
-    val publicRepos: Int,
-
+    var publicRepos: Int = 0,
+    
+    @ColumnInfo(name = "received_events_url")
     @Expose
     @SerializedName("received_events_url")
-    val receivedEventsUrl: String,
-
+    var receivedEventsUrl: String = "",
+    
+    @ColumnInfo(name = "repos_url")
     @Expose
     @SerializedName("repos_url")
-    val reposUrl: String,
-
+    var reposUrl: String = "",
+    
+    @ColumnInfo(name = "site_admin")
     @Expose
     @SerializedName("site_admin")
-    val siteAdmin: Boolean,
-
+    var siteAdmin: Boolean = false,
+    
+    @ColumnInfo(name = "starred_url")
     @Expose
     @SerializedName("starred_url")
-    val starredUrl: String,
-
+    var starredUrl: String = "",
+    
+    @ColumnInfo(name = "subscriptions_url")
     @Expose
     @SerializedName("subscriptions_url")
-    val subscriptionsUrl: String,
-
+    var subscriptionsUrl: String = "",
+    
+    @ColumnInfo(name = "twitter_username")
     @Expose
     @SerializedName("twitter_username")
-    val twitterUsername: String,
-
+    var twitterUsername: String = "",
+    
+    @ColumnInfo(name = "type")
     @Expose
     @SerializedName("type")
-    val type: String,
-
+    var type: String = "",
+    
+    @ColumnInfo(name = "updated_at")
     @Expose
     @SerializedName("updated_at")
-    val updatedAt: String,
-
+    var updatedAt: String = "",
+    
+    @ColumnInfo(name = "url")
     @Expose
     @SerializedName("url")
-    val url: String
+    var url: String = ""
 )

@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.triagung.githubuser.model.User
 import com.triagung.githubuser.model.UserDetail
 import com.triagung.githubuser.network.ApiConfig
 import com.triagung.githubuser.repository.UserRepository
@@ -47,14 +46,14 @@ class DetailViewModel(application: Application) : ViewModel() {
 
     private val userRepository: UserRepository = UserRepository(application)
 
-    fun getUserByUsername(username: String): LiveData<User> =
+    fun getUserByUsername(username: String): LiveData<UserDetail> =
         userRepository.getUserByUsername(username)
 
-    fun insert(user: User) {
+    fun insert(user: UserDetail) {
         userRepository.insert(user)
     }
 
-    fun delete(user: User) {
+    fun delete(user: UserDetail) {
         userRepository.delete(user)
     }
 }
