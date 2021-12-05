@@ -1,5 +1,6 @@
 package com.triagung.githubuser.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.triagung.githubuser.model.User
 
@@ -13,5 +14,5 @@ interface UserDao {
     fun delete(user: User)
 
     @Query("SELECT * FROM user WHERE login = :login LIMIT 1")
-    fun getUserByUsername(login: String): User
+    fun getUserByUsername(login: String): LiveData<User>
 }
