@@ -2,8 +2,9 @@ package com.triagung.githubuser.ui.activity
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
@@ -13,6 +14,7 @@ import com.triagung.githubuser.databinding.ActivityDetailBinding
 import com.triagung.githubuser.model.UserDetail
 import com.triagung.githubuser.ui.adapter.SectionsPagerAdapter
 import com.triagung.githubuser.viewmodel.DetailViewModel
+import com.triagung.githubuser.viewmodel.ViewModelFactory
 import kotlin.math.abs
 
 class DetailActivity : AppCompatActivity() {
@@ -27,10 +29,11 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityDetailBinding
+    private lateinit var detailViewModel: DetailViewModel
 
     private var username: String = ""
-
-    private val detailViewModel by viewModels<DetailViewModel>()
+    private var isFavorite = false
+    private var userDetail = UserDetail()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +43,26 @@ class DetailActivity : AppCompatActivity() {
 
         username = intent.getStringExtra(EXTRA_USERNAME) as String
 
+        detailViewModel = obtainViewModel(this)
+
+        detailViewModel.getUserByUsername(username).observe(this, { data ->
+            isFavorite = data != null
+            setIconFavorite(isFavorite)
+        })
+        detailViewModel.isLoading.observe(this, { state -> isLoading(state) })
+        detailViewModel.detailUser.observe(this, { data ->
+            userDetail = data
+            setData(data)
+        })
+
         setToolbar()
         getDetailUser()
         initView()
+    }
 
-        detailViewModel.isLoading.observe(this, { state -> isLoading(state) })
-        detailViewModel.detailUser.observe(this, { data -> setData(data) })
+    private fun obtainViewModel(activity: AppCompatActivity): DetailViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory)[DetailViewModel::class.java]
     }
 
     private fun setToolbar() {
@@ -92,6 +109,28 @@ class DetailActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
+
+        binding.fabFavorite.setOnClickListener {
+            if (!isFavorite) {
+                detailViewModel.insert(userDetail)
+                showToast(getString(R.string.add_favorite))
+                isFavorite = true
+                setIconFavorite(isFavorite)
+            } else {
+                detailViewModel.delete(userDetail)
+                showToast(getString(R.string.delete_favorite))
+                isFavorite = false
+                setIconFavorite(isFavorite)
+            }
+        }
+    }
+
+    private fun setIconFavorite(state: Boolean) {
+        if (state) {
+            binding.fabFavorite.setImageResource(R.drawable.ic_favorite)
+        } else {
+            binding.fabFavorite.setImageResource(R.drawable.ic_favorite_border)
+        }
     }
 
     private fun isLoading(isLoading: Boolean) {
@@ -106,6 +145,10 @@ class DetailActivity : AppCompatActivity() {
             binding.tvName.visibility = View.VISIBLE
             binding.tvUsername.visibility = View.VISIBLE
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onSupportNavigateUp(): Boolean {
