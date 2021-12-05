@@ -47,6 +47,9 @@ class DetailViewModel(application: Application) : ViewModel() {
 
     private val userRepository: UserRepository = UserRepository(application)
 
+    fun getUserByUsername(username: String): LiveData<User> =
+        userRepository.getUserByUsername(username)
+
     fun insert(user: User) {
         userRepository.insert(user)
     }
