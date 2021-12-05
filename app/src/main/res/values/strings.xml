@@ -7,4 +7,6 @@
     <string name="tab_text_2">Following</string>
     <string name="no_followers">This has no followers</string>
     <string name="no_following">This has no following</string>
+    <string name="add_favorite">Has been successfully added to favorites</string>
+    <string name="delete_favorite">Successful not favorite</string>
 </resources>
