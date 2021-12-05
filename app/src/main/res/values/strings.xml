@@ -9,4 +9,6 @@
     <string name="no_following">This has no following</string>
     <string name="add_favorite">Has been successfully added to favorites</string>
     <string name="delete_favorite">Successful not favorite</string>
+    <string name="favorite">Favorite</string>
+    <string name="no_favorite">No favorite data yet</string>
 </resources>
