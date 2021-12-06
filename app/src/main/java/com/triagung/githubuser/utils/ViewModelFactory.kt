@@ -1,8 +1,10 @@
-package com.triagung.githubuser.viewmodel
+package com.triagung.githubuser.utils
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.triagung.githubuser.viewmodel.DetailViewModel
+import com.triagung.githubuser.viewmodel.FavoriteViewModel
 
 class ViewModelFactory private constructor(private val application: Application) :
     ViewModelProvider.NewInstanceFactory() {

@@ -14,7 +14,7 @@ import com.triagung.githubuser.databinding.ActivityDetailBinding
 import com.triagung.githubuser.model.UserDetail
 import com.triagung.githubuser.ui.adapter.SectionsPagerAdapter
 import com.triagung.githubuser.viewmodel.DetailViewModel
-import com.triagung.githubuser.viewmodel.ViewModelFactory
+import com.triagung.githubuser.utils.ViewModelFactory
 import kotlin.math.abs
 
 class DetailActivity : AppCompatActivity() {
