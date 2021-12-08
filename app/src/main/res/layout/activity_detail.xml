@@ -88,14 +88,13 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
+            style="@style/TabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|enterAlways"
             app:tabGravity="fill"
-            app:tabIndicatorColor="@color/colorPrimary"
             app:tabMaxWidth="0dp"
             app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/colorPrimary"
             app:tabTextAppearance="@style/TextTab" />
     </com.google.android.material.appbar.AppBarLayout>
 

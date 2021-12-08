@@ -1,5 +1,6 @@
 package com.triagung.githubuser.ui.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -8,14 +9,23 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.triagung.githubuser.R
 import com.triagung.githubuser.databinding.ActivityMainBinding
 import com.triagung.githubuser.model.User
+import com.triagung.githubuser.preferences.SettingPreferences
 import com.triagung.githubuser.ui.adapter.UserAdapter
 import com.triagung.githubuser.utils.Helpers
+import com.triagung.githubuser.utils.SettingViewModelFactory
 import com.triagung.githubuser.viewmodel.MainViewModel
+import com.triagung.githubuser.viewmodel.SettingViewModel
+
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity(), UserAdapter.Listener {
 
@@ -33,8 +43,22 @@ class MainActivity : AppCompatActivity(), UserAdapter.Listener {
     }
 
     private fun initView() {
-        val mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
-            .get(MainViewModel::class.java)
+        val pref = SettingPreferences.getInstance(dataStore)
+        val settingViewModel =
+            ViewModelProvider(this, SettingViewModelFactory(pref))[SettingViewModel::class.java]
+
+        settingViewModel.getThemeSettings().observe(this, { isDarkModeActive ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        })
+
+        val mainViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[MainViewModel::class.java]
 
         mainViewModel.listUser.observe(this, { listUser -> setListData(listUser) })
         mainViewModel.isLoading.observe(this, { state -> showLoading(state) })
@@ -119,6 +143,10 @@ class MainActivity : AppCompatActivity(), UserAdapter.Listener {
         when (item.itemId) {
             R.id.favorite -> {
                 val intent = Intent(this, FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.setting -> {
+                val intent = Intent(this, SettingActivity::class.java)
                 startActivity(intent)
             }
         }

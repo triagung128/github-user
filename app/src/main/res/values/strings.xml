@@ -11,4 +11,7 @@
     <string name="delete_favorite">Successful not favorite</string>
     <string name="favorite">Favorite</string>
     <string name="no_favorite">No favorite data yet</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="settings">Settings</string>
+    <string name="setting">Setting</string>
 </resources>
