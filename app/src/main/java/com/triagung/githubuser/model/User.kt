@@ -19,7 +19,7 @@ data class User(
     @Expose
     @SerializedName("following_url")
     val followingUrl: String,
-
+    
     @Expose
     @SerializedName("gists_url")
     val gistsUrl: String,
